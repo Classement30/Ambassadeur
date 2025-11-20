@@ -1,16 +1,19 @@
 {
-  "name": "Thiaga",
+  "name": "classement30",
   "private": false,
   "version": "1.0.0",
   "type": "module",
+   "homepage": "https://classement30.github.io/Ambassadeur/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit -p tsconfig.app.json"
+    "typecheck": "tsc --noEmit -p tsconfig.app.json",
+    "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://mathiasakowanou76-ship-it.github.io/Thiaga/",
+ 
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
     "lucide-react": "^0.344.0",
