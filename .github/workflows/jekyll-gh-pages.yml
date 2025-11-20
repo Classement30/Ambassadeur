@@ -1,0 +1,90 @@
+name: Deploy Vite React to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./dist   # ⚠️ Dossier Vite
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-and-deploy
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pagname: Deploy Vite React to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]        # Déclenchement sur chaque push vers main
+  workflow_dispatch:           # Permet un déclenchement manuel depuis l’onglet Actions
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Récupérer le code
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2️⃣ Installer Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      # 3️⃣ Installer les dépendances
+      - name: Install dependencies
+        run: npm install
+
+      # 4️⃣ Construire le projet Vite
+      - name: Build project
+        run: npm run build
+
+      # 5️⃣ Uploader le dossier dist pour GitHub Pages
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./dist    # ⚠️ Le build de Vite se trouve dans dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-and-deploy
+
+    steps:
+      # 6️⃣ Déployer le build sur GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
+
