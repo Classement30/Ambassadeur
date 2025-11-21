@@ -1,4 +1,3 @@
-import { Trophy, Diamond, Award } from 'lucide-react';
 import type { Candidate } from '../types';
 
 interface CandidateRowProps {
@@ -10,31 +9,10 @@ interface CandidateRowProps {
 function CandidateRow({ candidate, rank, maxVotes }: CandidateRowProps) {
   const barWidth = maxVotes > 0 ? (candidate.votes / maxVotes) * 100 : 0;
 
-  const getRankBadge = () => {
-    if (rank === 1) {
-      return (
-        <div className="flex items-center gap-1 text-yellow-400 font-bold whitespace-nowrap pointer-events-none">
-          <Trophy className="w-4 h-4 md:w-5 md:h-5" fill="currentColor" />
-          <span className="text-xs md:text-sm">Or</span>
-        </div>
-      );
-    }
-    if (rank === 2) {
-      return (
-        <div className="flex items-center gap-1 text-cyan-400 font-bold whitespace-nowrap pointer-events-none">
-          <Diamond className="w-4 h-4 md:w-5 md:h-5" fill="currentColor" />
-          <span className="text-xs md:text-sm">Diamant</span>
-        </div>
-      );
-    }
-    if (rank === 3) {
-      return (
-        <div className="flex items-center gap-1 text-orange-600 font-bold whitespace-nowrap pointer-events-none">
-          <Award className="w-4 h-4 md:w-5 md:h-5" fill="currentColor" />
-          <span className="text-xs md:text-sm">Bronze</span>
-        </div>
-      );
-    }
+  const getMedalImage = () => {
+    if (rank === 1) return '/medal-1.svg';
+    if (rank === 2) return '/medal-2.svg';
+    if (rank === 3) return '/medal-3.svg';
     return null;
   };
 
@@ -51,14 +29,18 @@ function CandidateRow({ candidate, rank, maxVotes }: CandidateRowProps) {
             <span className="text-white font-bold text-sm md:text-lg flex-shrink-0">{candidate.votes}</span>
           </div>
 
-          <div className="relative h-5 md:h-6 bg-white/10 rounded-full overflow-hidden flex items-center justify-center">
+          <div className="relative h-5 md:h-6 bg-white/10 rounded-full overflow-visible flex items-center justify-center">
             <div
               className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-gray-300 rounded-full transition-all duration-500 ease-out"
               style={{ width: `${barWidth}%` }}
             />
-            {rank <= 3 && (
+            {rank <= 3 && getMedalImage() && (
               <div className="relative z-10">
-                {getRankBadge()}
+                <img
+                  src={getMedalImage()!}
+                  alt={`Médaille ${rank}`}
+                  className="h-12 md:h-14 w-auto drop-shadow-lg"
+                />
               </div>
             )}
           </div>
