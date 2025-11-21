@@ -1,7 +1,9 @@
 import { useMemo } from 'react';
+import { X } from 'lucide-react';
 import CandidateList from './components/CandidateList';
 import { initialCandidates } from './data/initialCandidates';
 import logoImg from '../public/WhatsApp Image 2025-11-15 à 15.56.33_05e2a873.jpg';
+import logo2Img from '../public/WhatsApp Image 2025-11-19 at 01.25.59.jpeg';
 
 function App() {
   const sortedCandidates = useMemo(() => {
@@ -24,11 +26,19 @@ function App() {
 
       <div className="relative z-10 container mx-auto px-4 py-12 max-w-5xl">
         <div className="flex flex-col items-center mb-12">
-          <img
-            src={logoImg}
-            alt="Logo"
-            className="h-40 w-40 object-cover rounded-full border-4 border-white mb-8 shadow-2xl"
-          />
+          <div className="flex items-center justify-center gap-8 mb-8">
+            <img
+              src={logoImg}
+              alt="Logo 1"
+              className="h-40 w-40 object-cover rounded-full border-4 border-white shadow-2xl"
+            />
+            <X size={48} className="text-white flex-shrink-0" strokeWidth={3} />
+            <img
+              src={logo2Img}
+              alt="Logo 2"
+              className="h-40 w-40 object-cover rounded-full border-4 border-white shadow-2xl"
+            />
+          </div>
 
           <h1 className="text-5xl md:text-6xl font-bold text-white text-center leading-tight mb-6">
             Classement des Candidats
