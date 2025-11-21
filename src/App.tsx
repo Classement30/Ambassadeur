@@ -30,9 +30,13 @@ function App() {
             className="h-40 w-40 object-cover rounded-full border-4 border-white mb-8 shadow-2xl"
           />
 
-          <h1 className="text-5xl md:text-6xl font-bold text-white text-center leading-tight">
+          <h1 className="text-5xl md:text-6xl font-bold text-white text-center leading-tight mb-6">
             Classement des Candidats
           </h1>
+
+          <p className="text-lg md:text-xl text-white/90 text-center max-w-2xl px-4 leading-relaxed">
+            Découvrez le classement en temps réel de tous les candidats. Chaque vote compte pour déterminer les ambassadeurs qui représenteront notre communauté.
+          </p>
         </div>
 
         <CandidateList candidates={sortedCandidates} />
