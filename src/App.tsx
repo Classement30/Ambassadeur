@@ -26,17 +26,18 @@ function App() {
 
       <div className="relative z-10 container mx-auto px-4 py-12 max-w-5xl">
         <div className="flex flex-col items-center mb-12">
-          <div className="flex items-center justify-center gap-8 mb-8">
+          <div className="flex items-center justify-center gap-4 md:gap-8 mb-8">
             <img
               src={logoImg}
               alt="Logo 1"
-              className="h-40 w-40 object-cover rounded-full border-4 border-white shadow-2xl"
+              className="h-24 w-24 md:h-40 md:w-40 object-cover rounded-full border-4 border-white shadow-2xl flex-shrink-0"
             />
-            <X size={48} className="text-white flex-shrink-0" strokeWidth={3} />
+            <X size={32} className="text-white flex-shrink-0 md:hidden" strokeWidth={3} />
+            <X size={48} className="text-white flex-shrink-0 hidden md:block" strokeWidth={3} />
             <img
               src={logo2Img}
               alt="Logo 2"
-              className="h-40 w-40 object-cover rounded-full border-4 border-white shadow-2xl"
+              className="h-24 w-24 md:h-40 md:w-40 object-cover rounded-full border-4 border-white shadow-2xl flex-shrink-0"
             />
           </div>
 
