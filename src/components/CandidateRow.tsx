@@ -34,7 +34,7 @@ function CandidateRow({ candidate, rank, maxVotes }: CandidateRowProps) {
               className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-gray-300 rounded-full transition-all duration-500 ease-out"
               style={{ width: `${barWidth}%` }}
             />
-            {rank <= 3 && getMedalImage() && (
+            {rank > 1 && rank <= 3 && getMedalImage() && (
               <div className="relative z-10">
                 <img
                   src={getMedalImage()!}
